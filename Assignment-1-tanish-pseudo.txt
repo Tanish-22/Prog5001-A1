@@ -1,0 +1,61 @@
+Psudo-code Assignment 1
+
+    SET numberOfStudents to 30
+    CREATE array marks of size numberOfStudents
+
+    INITIALIZE scanner for user input
+
+    PRINT "Enter assignment: "
+    READ assignment name from user input
+    PRINT "Assignment is: " followed by assignment name
+
+    PRINT "Give marks for 30 students: "
+    
+    FOR each student from 0 to numberOfStudents - 1 DO
+        READ student’s mark as float value
+
+        WHILE mark is less than 0 OR greater than 30 DO
+            PRINT "Invalid input, please enter a mark between 0-30 again"
+            READ mark again as float value
+        END WHILE
+
+        STORE valid mark in marks array at current index
+    END FOR
+
+    PRINT "Entered marks:"
+    FOR each mark in marks array DO
+        PRINT mark
+    END FOR
+
+    SET min to marks[0]
+    SET max to marks[0]
+    
+    FOR each mark in marks array starting from index 1 DO
+        IF mark < min THEN
+            SET min to mark
+        END IF
+        IF mark > max THEN
+            SET max to mark
+        END IF
+    END FOR
+    
+    PRINT "The maximum marks are: " followed by max and "The minimum marks are: " followed by min
+
+    SET total to 0
+    FOR each mark in marks array DO
+        ADD mark to total
+    END FOR
+
+    CALCULATE mean as total divided by numberOfStudents
+
+    SET varianceSum to 0
+    FOR each mark in marks array DO
+        SET d to (mark - mean)
+        ADD (d * d) to varianceSum
+    END FOR
+
+    CALCULATE variance as varianceSum divided by numberOfStudents
+    CALCULATE standard deviation as square root of variance
+
+    PRINT "The mean is: " followed by mean
+    PRINT "The standard deviation is: " followed by standard deviation
