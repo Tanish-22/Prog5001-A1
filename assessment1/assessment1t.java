@@ -15,17 +15,28 @@ public class assessment1t
         System.out.println("assignment is: " + assignment);
        System.out.println("Give marks for 30 student: ");
 
-       for (int i = 0; i<numberofstudent; i++) {
+       for (int i = 0; i < numberofstudent; i++) {
+            float value = -1;
+            boolean validInput = false;
 
-           // Reads a float value from input
-           float value = scanner.nextFloat();
-           // Checks that the entered mark is between 0 and 30
-           while(value <0 || value >30){
-               System.out.println("invalid input please enter between 0-30 again");
-               value = scanner.nextFloat();
-               
+            // Loop until a valid input is entered
+            while (!validInput) {
+                try {
+                    System.out.print("Enter marks for student " + (i + 1) + ": ");
+                    value = scanner.nextFloat();
+
+                    // Checks that the entered mark is between 0 and 30
+                    if (value >= 0 && value <= 30) {
+                        marks[i] = value;
+                        validInput = true; 
+                    } else {
+                        System.out.println("Please enter a mark between 0-30.");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter a numeric value.");
+                    scanner.next(); 
+                }
             }
-           marks[i] = value;           
         } 
      
         System.out.println("entered marks");
